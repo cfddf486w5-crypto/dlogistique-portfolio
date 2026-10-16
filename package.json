@@ -1,0 +1,10 @@
+{
+  "name": "dlogistique-portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Portfolio officiel DLogistique (portfolio.dlogistique.com) — Alexandre Damour, Spécialiste à l'inventaire & Fondateur",
+  "scripts": {
+    "dev": "npx wrangler dev --port 8788",
+    "deploy": "npx wrangler deploy"
+  }
+}

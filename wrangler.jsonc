@@ -1,0 +1,15 @@
+{
+  // Déploiement Cloudflare Workers (fichiers statiques) pour portfolio.dlogistique.com
+  "name": "dlogistique-portfolio",
+  "compatibility_date": "2025-09-01",
+  "assets": {
+    "directory": "./public",
+    "not_found_handling": "single-page-application"
+  },
+  "routes": [
+    {
+      "pattern": "portfolio.dlogistique.com",
+      "custom_domain": true
+    }
+  ]
+}

@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="fr-CA" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DLogistique — Portfolio Officiel d'Ingénierie Intralogistique | Alexandre Damour</title>
+  <meta name="description" content="Portfolio officiel de DLogistique (Alexandre Damour, Spécialiste à l'inventaire, Laval, Québec). Découvrez 18 applications de terrain, moteurs de slotting 3D, cédules de conteneurs, inspections CNESST et listes à codes-barres." />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['IBM Plex Mono', 'monospace'],
+          },
+          colors: {
+            dl: {
+              bg: '#080d14',
+              card: '#0f1724',
+              border: '#1e293b',
+              emerald: '#10b981',
+              sky: '#38bdf8',
+              amber: '#f59e0b',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    .glass-nav {
+      background: rgba(8, 13, 20, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    html:not(.dark) .glass-nav {
+      background: rgba(255, 255, 255, 0.88);
+    }
+    .hero-glow {
+      background: radial-gradient(circle at 20% 20%, rgba(16, 185, 129, 0.14), transparent 45%),
+                  radial-gradient(circle at 80% 30%, rgba(56, 189, 248, 0.12), transparent 45%);
+    }
+    .card-lift {
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    .card-lift:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px -15px rgba(16, 185, 129, 0.18);
+    }
+    @media print {
+      body * { visibility: hidden; }
+      #printable-sheet, #printable-sheet * { visibility: visible; }
+      #printable-sheet {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        background: white !important;
+        color: black !important;
+        padding: 24px !important;
+        box-shadow: none !important;
+      }
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-[#080d14] dark:text-slate-100 min-h-screen flex flex-col selection:bg-emerald-500 selection:text-white transition-colors duration-200">
+
+  <!-- TOP INTELLECTUAL PROPERTY & STATUS BAR -->
+  <div class="bg-emerald-950/90 border-b border-emerald-800/60 text-emerald-200 text-xs py-2 px-4">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-2">
+        <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span class="font-mono font-medium">DLogistique™ — Entreprise immatriculée au Québec (NEQ)</span>
+        <span class="hidden sm:inline text-emerald-400/70">|</span>
+        <span class="hidden sm:inline text-emerald-100/90">Créations originales d'Alexandre Damour · Laval (Québec)</span>
+      </div>
+      <div class="flex items-center gap-3">
+        <span class="font-mono text-[11px] bg-emerald-900/70 border border-emerald-700/60 px-2 py-0.5 rounded">portfolio.dlogistique.com</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- STICKY NAVIGATION -->
+  <header class="sticky top-0 z-50 glass-nav border-b border-slate-200 dark:border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between gap-4">
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-400 to-teal-600 flex items-center justify-center shadow-lg shadow-emerald-500/20 group-hover:scale-105 transition-transform">
+          <i class="fa-solid fa-warehouse text-slate-950 text-lg"></i>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="text-xl font-black tracking-tight text-slate-900 dark:text-white">DLogistique</span>
+            <span class="px-2 py-0.5 text-[11px] font-mono font-semibold bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 rounded-full">PORTFOLIO</span>
+          </div>
+          <p class="text-[11px] text-slate-500 dark:text-slate-400">Alexandre Damour · Spécialiste à l'inventaire & Concepteur</p>
+        </div>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-6 text-sm font-medium text-slate-600 dark:text-slate-300">
+        <a href="#histoire" class="hover:text-emerald-500 transition-colors">Philosophie</a>
+        <a href="#parcours" class="hover:text-emerald-500 transition-colors">Les 10 Modules</a>
+        <a href="#simulateur" class="hover:text-emerald-500 transition-colors flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-emerald-400"></span>Démo Codes-Barres
+        </a>
+        <a href="#applications" class="hover:text-emerald-500 transition-colors">Catalogue (18 Apps)</a>
+        <a href="#videos" class="hover:text-emerald-500 transition-colors">Vidéos 3D</a>
+        <a href="#recherche" class="hover:text-emerald-500 transition-colors">R&D (27 Études)</a>
+        <a href="#propriete" class="hover:text-emerald-500 transition-colors">Propriété & NEQ</a>
+      </nav>
+
+      <div class="flex items-center gap-2.5">
+        <button onclick="toggleTheme()" class="p-2.5 rounded-xl bg-slate-200/70 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 hover:text-emerald-500 border border-slate-300 dark:border-slate-700 transition-colors" title="Basculer le thème Clair / Sombre">
+          <i id="theme-icon" class="fa-solid fa-sun text-sm"></i>
+        </button>
+        <a href="mailto:support@dlogistique.com" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs sm:text-sm font-semibold shadow-lg shadow-emerald-600/20 transition-all">
+          <i class="fa-solid fa-paper-plane"></i>
+          <span>Me joindre</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-1">
+
+    <!-- HERO SECTION -->
+    <section class="relative overflow-hidden hero-glow border-b border-slate-200 dark:border-slate-800/80 pt-12 pb-16 sm:pt-20 sm:pb-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-7 space-y-6">
+            <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 text-xs font-semibold">
+              <i class="fa-solid fa-helmet-safety"></i>
+              <span>Conçu sur le plancher d'entrepôt au Québec · Pas dans une tour à bureaux</span>
+            </div>
+
+            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 dark:text-white leading-[1.08]">
+              Transformer les vrais problèmes d'inventaire en <span class="bg-gradient-to-r from-emerald-400 via-teal-300 to-sky-400 bg-clip-text text-transparent">outils qui parlent d'eux-mêmes.</span>
+            </h1>
+
+            <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl">
+              Je m'appelle <strong>Alexandre Damour</strong>. Je suis <strong>Spécialiste à l'inventaire</strong> en entrepôt.
+              Plutôt que d'endurer les feuilles perdues, les casiers mal classés, les conteneurs en retard et les fichiers Excel lourds, j'ai conçu dans mes temps libres — depuis mon iPhone et mon poste de travail, assisté par l'intelligence artificielle — une suite complète d'outils pensés pour la vraie réalité du terrain.
+            </p>
+
+            <!-- PHILOSOPHY QUOTE -->
+            <blockquote class="p-4 sm:p-5 rounded-2xl bg-white/90 dark:bg-slate-900/90 border-l-4 border-emerald-500 shadow-sm">
+              <p class="text-sm sm:text-base font-semibold italic text-slate-800 dark:text-slate-100">
+                « Ma philosophie est simple : toujours dire la vérité, reconnaître franchement quand une erreur arrive, et ne jamais baisser les bras — parce qu'à chaque problème, au moins 10 solutions existent. »
+              </p>
+              <footer class="mt-2 text-xs font-mono text-emerald-600 dark:text-emerald-400">
+                — Alexandre Damour, Fondateur de DLogistique (Laval, Québec)
+              </footer>
+            </blockquote>
+
+            <div class="flex flex-wrap items-center gap-3 pt-2">
+              <a href="#applications" class="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm shadow-xl shadow-emerald-600/25 transition-all">
+                <i class="fa-solid fa-layer-group"></i>
+                <span>Explorer les 18 Applications</span>
+              </a>
+              <a href="#simulateur" class="inline-flex items-center gap-2.5 px-5 py-3.5 rounded-xl bg-slate-900 dark:bg-slate-800 hover:bg-slate-800 dark:hover:bg-slate-700 text-white font-semibold text-sm border border-slate-700 transition-all">
+                <i class="fa-solid fa-barcode text-emerald-400"></i>
+                <span>Tester le Générateur Codes-Barres</span>
+              </a>
+              <a href="#videos" class="inline-flex items-center gap-2 px-4 py-3.5 rounded-xl bg-slate-200/80 dark:bg-slate-900/70 hover:bg-slate-300 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 font-semibold text-sm border border-slate-300 dark:border-slate-800 transition-all">
+                <i class="fa-solid fa-play text-sky-400"></i>
+                <span>Voir la vidéo 3D (50s)</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- RIGHT COLUMN: KEY METRICS & HONESTY CARD -->
+          <div class="lg:col-span-5 space-y-4">
+            <div class="p-6 rounded-3xl bg-white dark:bg-[#0f1724] border border-slate-200 dark:border-slate-800 shadow-2xl space-y-5">
+              <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-4">
+                <div>
+                  <span class="text-xs font-mono uppercase tracking-wider text-emerald-500 font-semibold">Bilan Authentique 2026</span>
+                  <h2 class="text-lg font-bold text-slate-900 dark:text-white mt-0.5">L'Écosystème DLogistique en Chiffres</h2>
+                </div>
+                <span class="px-2.5 py-1 rounded-lg bg-emerald-500/10 text-emerald-400 font-mono text-xs font-bold border border-emerald-500/30">100% Réel</span>
+              </div>
+
+              <div class="grid grid-cols-2 gap-3.5">
+                <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800">
+                  <div class="text-2xl sm:text-3xl font-black text-emerald-500 font-mono">18</div>
+                  <div class="text-xs font-semibold text-slate-700 dark:text-slate-200 mt-1">Applications Clés</div>
+                  <div class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">Sélectionnées parmi 38 prototypes créés</div>
+                </div>
+                <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800">
+                  <div class="text-2xl sm:text-3xl font-black text-sky-400 font-mono">3</div>
+                  <div class="text-xs font-semibold text-slate-700 dark:text-slate-200 mt-1">Piliers Testés en Vrai</div>
+                  <div class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">Déplacements, Cédule Quais & Slotting ABC</div>
+                </div>
+                <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800">
+                  <div class="text-2xl sm:text-3xl font-black text-amber-400 font-mono">27</div>
+                  <div class="text-xs font-semibold text-slate-700 dark:text-slate-200 mt-1">Études d'Ingénierie</div>
+                  <div class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">Normes CNESST, CSA B335, TMD & Racks</div>
+                </div>
+                <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800">
+                  <div class="text-2xl sm:text-3xl font-black text-purple-400 font-mono">80+</div>
+                  <div class="text-xs font-semibold text-slate-700 dark:text-slate-200 mt-1">Symboles CAO & ZPL</div>
+                  <div class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">Plans 2D/3D, bacs P1–P7 & Zebra</div>
+                </div>
+              </div>
+
+              <!-- TRANSPARENCY BOX -->
+              <div class="p-4 rounded-2xl bg-emerald-950/40 border border-emerald-800/50 text-xs text-slate-300 space-y-1.5">
+                <div class="font-bold text-emerald-400 flex items-center gap-2">
+                  <i class="fa-solid fa-shield-halved"></i>
+                  <span>Engagement de Franchise Absolue</span>
+                </div>
+                <p class="leading-relaxed text-slate-300/90">
+                  Chaque projet présenté ici affiche son <strong>état d'avancement exact</strong> : ce qui a déjà été testé sur le terrain (listes de déplacements à codes-barres, cédule de conteneurs, classement ABC) et ce qui est en laboratoire R&D. Aucune fausse promesse.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 1: HISTOIRE & APPROCHE "SANDWICH EXCEL" -->
+    <section id="histoire" class="py-16 border-b border-slate-200 dark:border-slate-800/80">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mb-12">
+          <span class="font-mono text-xs uppercase tracking-widest text-emerald-500 font-semibold">01 · L'Approche Terrain</span>
+          <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-2">
+            Pourquoi un Spécialiste à l'inventaire conçoit de meilleurs outils qu'un bureau d'informatique
+          </h2>
+          <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mt-3 leading-relaxed">
+            Les grands logiciels d'entrepôt (WMS/ERP) sont conçus pour la comptabilité, mais sur le plancher, ils sont souvent rigides et intimidants. À l'inverse, le changement brusque fait peur aux gestionnaires. C'est pourquoi <strong>DLogistique</strong> a créé l'approche du <strong>« Pont Excel Rassurant »</strong>.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="p-6 rounded-2xl bg-white dark:bg-[#0f1724] border border-slate-200 dark:border-slate-800 shadow-lg">
+            <div class="w-11 h-11 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 flex items-center justify-center text-lg font-bold mb-4">
+              1
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white">Zéro Peur, Zéro Risque TI</h3>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
+              Nos outils ne cassent rien à vos habitudes : vous glissez votre fichier Excel habituel depuis l'ordinateur de l'entrepôt, l'application génère les listes à codes-barres, les parcours optimisés ou les plans 3D, et vous rend un fichier Excel propre.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-white dark:bg-[#0f1724] border border-slate-200 dark:border-slate-800 shadow-lg">
+            <div class="w-11 h-11 rounded-xl bg-sky-500/15 border border-sky-500/30 text-sky-400 flex items-center justify-center text-lg font-bold mb-4">
+              2
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white">Pensé pour le PC, l'iPhone & les Scanners</h3>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
+              Que le travail parte de l'ordinateur de bureau (impression de listes à codes-barres Code 128), d'un terminal durci <strong>Honeywell CT45</strong>, d'une imprimante <strong>Zebra ZQ630</strong> ou d'un <strong>iPhone</strong>, tout fonctionne même si le Wi-Fi coupe au fond d'une allée métallique.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-white dark:bg-[#0f1724] border border-slate-200 dark:border-slate-800 shadow-lg">
+            <div class="w-11 h-11 rounded-xl bg-amber-500/15 border border-amber-500/30 text-amber-400 flex items-center justify-center text-lg font-bold mb-4">
+              3
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white">L'Expertise des Détails Invisibles</h3>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
+              Demander automatiquement <em>« Le bin de provenance est-il vide ? »</em> après un déplacement, vérifier la capacité physique des bacs P1 à P7 (60 à 420 pcs), ou intercepter les articles en dessous de 20 unités dès l'ouverture du conteneur : ce sont des détails que seul le terrain connaît.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: LA CARTE INTERACTIVE DES 10 MODULES (PARCOURS DE LA MARCHANDISE) -->
+    <section id="parcours" class="py-16 bg-slate-100/70 dark:bg-[#0b121e] border-b border-slate-200 dark:border-slate-800/80">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+          <div>
+            <span class="font-mono text-xs uppercase tracking-widest text-emerald-500 font-semibold">02 · Architecture Globale</span>
+            <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-2">
+              Le Parcours de la Marchandise en 10 Modules
+            </h2>
+            <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mt-2 max-w-2xl">
+              Cliquez sur n'importe quelle étape du parcours physique d'un entrepôt pour voir comment <strong>DLogistique</strong> intervient, de la barrière extérieure jusqu'au camion chargé.
+            </p>
+          </div>
+        </div>
+
+        <!-- 10 STEPS INTERACTIVE SELECTOR -->
+        <div class="grid grid-cols-2 sm:grid-cols-5 gap-2.5 mb-6" id="journey-buttons"></div>
+
+        <!-- ACTIVE STEP DISPLAY -->
+        <div id="journey-detail" class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#0f1724] border border-emerald-500/40 shadow-xl"></div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: SIMULATEUR INTERACTIF EN DIRECT (FEUILLE DE DÉPLACEMENT À CODES-BARRES) -->
+    <section id="simulateur" class="py-16 border-b border-slate-200 dark:border-slate-800/80">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mb-10">
+          <span class="font-mono text-xs uppercase tracking-widest text-emerald-500 font-semibold">03 · Démonstration Interactive en Direct</span>
+          <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-2">
+            Testez l'Impression de Liste à Codes-Barres (Ordinateur & Scanner)
+          </h2>
+          <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
+            Voici une démonstration interactive du module de <strong>Déplacements avec codes-barres</strong> utilisé depuis l'ordinateur de l'entrepôt. Modifiez une ligne ou ajoutez un déplacement ci-dessous, puis cliquez sur <strong>« Imprimer la feuille officielle »</strong> : les codes-barres générés sont de vrais codes <strong>Code 128</strong> lisibles au pistolet laser !
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <!-- CONTROLS -->
+          <div class="lg:col-span-5 p-6 rounded-2xl bg-white dark:bg-[#0f1724] border border-slate-200 dark:border-slate-800 shadow-lg space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
+              <h3 class="font-bold text-base text-slate-900 dark:text-white flex items-center gap-2">
+                <i class="fa-solid fa-sliders text-emerald-400"></i>
+                <span>Ajouter une ligne au lot <code class="text-emerald-400 font-mono">DEP.00001</code></span>
+              </h3>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">Bin de Départ (Source)</label>
+                <input id="sim-from" type="text" value="L2A-04-B" class="w-full px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 font-mono text-sm text-slate-900 dark:text-white" />
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">Bin d'Arrivée (Cible)</label>
+                <input id="sim-to" type="text" value="L3C-12-A" class="w-full px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 font-mono text-sm text-slate-900 dark:text-white" />
+              </div>
+            </div>
+
+            <div class="grid grid-cols-3 gap-3">
+              <div class="col-span-2">
+                <label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">Code Produit (SKU)</label>
+                <input id="sim-sku" type="text" value="BRK-88420-QC" class="w-full px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 font-mono text-sm text-slate-900 dark:text-white" />
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">Quantité</label>
+                <input id="sim-qty" type="number" value="24" min="1" max="999" class="w-full px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 font-mono text-sm text-slate-900 dark:text-white" />
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">Type de Bac & Règle de Capacité</label>
+              <select id="sim-bin-type" class="w-full px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-sm text-slate-900 dark:text-white">
+                <option value="P1 (Max 60 pcs)">Bac P1 — Capacité max 60 pcs</option>
+                <option value="P2 (Max 120 pcs)" selected>Bac P2 — Capacité max 120 pcs</option>
+                <option value="P3 (Max 180 pcs)">Bac P3 — Capacité max 180 pcs</option>
+                <option value="P4 (Max 240 pcs)">Bac P4 — Capacité max 240 pcs</option>
+                <option value="Palette Réserve">Palette Réserve Lourde</option>
+              </select>
+            </div>
+
+            <div class="flex flex-wrap gap-2.5 pt-2">
+              <button onclick="addSimulatedMove()" class="flex-1 py-2.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs sm:text-sm shadow-md transition-all flex items-center justify-center gap-2">
+                <i class="fa-solid fa-plus"></i>
+                <span>Ajouter à la feuille</span>
+              </button>
+              <button onclick="window.print()" class="py-2.5 px-4 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs sm:text-sm shadow-md transition-all flex items-center justify-center gap-2">
+                <i class="fa-solid fa-print"></i>
+                <span>Imprimer la feuille</span>
+              </button>
+            </div>
+
+            <div class="p-3.5 rounded-xl bg-slate-100 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400">
+              <i class="fa-solid fa-lightbulb text-amber-400 mr-1"></i>
+              <strong>Pourquoi ça marche sur le terrain :</strong> Le spécialiste à l'inventaire génère cette feuille sur l'ordinateur à partir de son Excel. Sur le plancher, le cariste scanne directement les 3 codes-barres de chaque ligne sans jamais faire d'erreur de frappe, et coche si le bin de départ est devenu vide !
+            </div>
+          </div>
+
+          <!-- LIVE PRINTABLE BARCODE SHEET PREVIEW -->
+          <div class="lg:col-span-7">
+            <div id="printable-sheet" class="p-6 rounded-2xl bg-white text-slate-900 border-2 border-slate-300 shadow-2xl space-y-5">
+              <div class="flex flex-wrap items-start justify-between gap-4 border-b-2 border-slate-900 pb-4">
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="px-2 py-0.5 bg-slate-900 text-white font-mono text-xs font-bold rounded">DLogistique™</span>
+                    <span class="font-mono text-xs text-slate-600">BON DE DÉPLACEMENT & CONSOLIDATION</span>
+                  </div>
+                  <h4 class="text-xl font-black tracking-tight text-slate-900 mt-1">LOT : DEP.00001.QC</h4>
+                  <p class="text-xs text-slate-600">Préparé par : <strong>Alexandre Damour (Spécialiste Inventaire)</strong></p>
+                </div>
+                <div class="text-right">
+                  <div id="lot-master-barcode" class="inline-block"></div>
+                  <div class="font-mono text-[10px] text-slate-500 mt-0.5">SCAN LOT COMPLET</div>
+                </div>
+              </div>
+
+              <!-- TABLE OF BARCODE MOVES -->
+              <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                  <thead>
+                    <tr class="border-b-2 border-slate-800 text-[11px] font-mono uppercase text-slate-700">
+                      <th class="py-2 pr-2">1. Scan Départ</th>
+                      <th class="py-2 px-2">2. Scan Produit & Qté</th>
+                      <th class="py-2 px-2">3. Scan Arrivée</th>
+                      <th class="py-2 pl-2 text-center">Bin Départ Vide ?</th>
+                    </tr>
+                  </thead>
+                  <tbody id="sim-rows" class="divide-y divide-slate-300 text-xs"></tbody>
+                </table>
+              </div>
+
+              <!-- SIGNATURES & OFFICIAL IP FOOTER -->
+              <div class="pt-4 border-t-2 border-slate-900 flex flex-wrap items-center justify-between gap-4 text-[11px] text-slate-700">
+                <div class="flex gap-6">
+                  <div><strong>Exécuté par :</strong> ____________________</div>
+                  <div><strong>Vérifié par :</strong> ____________________</div>
+                </div>
+                <div class="font-mono text-[10px] text-slate-600">
+                  © 2026 DLogistique (NEQ Québec) — Propriété intellectuelle d'Alexandre Damour
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: LE GRAND CATALOGUE DES 18 APPLICATIONS DLOGISTIQUE -->
+    <section id="applications" class="py-16 bg-slate-100/70 dark:bg-[#0b121e] border-b border-slate-200 dark:border-slate-800/80">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-8">
+          <div>
+            <span class="font-mono text-xs uppercase tracking-widest text-emerald-500 font-semibold">04 · Catalogue Officiel</span>
+            <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-2">
+              Les 18 Applications & Outils DLogistique
+            </h2>
+            <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mt-2 max-w-2xl">
+              Explorez chaque application avec ses vraies captures d'écran, les problèmes de terrain qu'elle règle et son état de maturité réel. Cliquez sur une carte pour ouvrir sa fiche technique complète.
+            </p>
+          </div>
+
+          <!-- SEARCH & CONNECTION MODE -->
+          <div class="flex flex-wrap items-center gap-3">
+            <div class="relative w-full sm:w-64">
+              <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+              <input id="app-search" type="text" oninput="renderApps()" placeholder="Chercher (ex: ABC, Zebra, Quai...)" class="w-full pl-9 pr-3 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-xs sm:text-sm text-slate-900 dark:text-white focus:outline-none focus:border-emerald-500" />
+            </div>
+          </div>
+        </div>
+
+        <!-- FILTER PILLS -->
+        <div class="flex flex-wrap items-center gap-2 mb-8" id="cat-buttons">
+          <button onclick="setCat('all')" data-cat="all" class="cat-btn px-3.5 py-2 rounded-xl text-xs font-bold bg-emerald-600 text-white shadow">Toutes les applications (18)</button>
+          <button onclick="setCat('tested')" data-cat="tested" class="cat-btn px-3.5 py-2 rounded-xl text-xs font-bold bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border border-slate-300 dark:border-slate-800">⭐ Testées en vrai / Prioritaires (5)</button>
+          <button onclick="setCat('inventaire')" data-cat="inventaire" class="cat-btn px-3.5 py-2 rounded-xl text-xs font-bold bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border border-slate-300 dark:border-slate-800">📦 Inventaire, Slotting ABC & Déplacements (6)</button>
+          <button onclick="setCat('quais')" data-cat="quais" class="cat-btn px-3.5 py-2 rounded-xl text-xs font-bold bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border border-slate-300 dark:border-slate-800">🚛 Quais, Conteneurs & Sécurité CNESST (4)</button>
+          <button onclick="setCat('plans')" data-cat="plans" class="cat-btn px-3.5 py-2 rounded-xl text-xs font-bold bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border border-slate-300 dark:border-slate-800">📐 Plans 2D/3D & Palettiers (5)</button>
+          <button onclick="setCat('supervision')" data-cat="supervision" class="cat-btn px-3.5 py-2 rounded-xl text-xs font-bold bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border border-slate-300 dark:border-slate-800">🧠 Supervision & Connaissances IA (3)</button>
+        </div>
+
+        <!-- APPS GRID -->
+        <div id="portfolio-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: PRODUCTIONS VIDÉO OFFICIELLES (100% PLEIN ÉCRAN) -->
+    <section id="videos" class="py-16 border-b border-slate-200 dark:border-slate-800/80">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mb-10">
+          <span class="font-mono text-xs uppercase tracking-widest text-emerald-500 font-semibold">05 · Démonstrations Vidéo HD</span>
+          <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-2">
+            Voir les Moteurs DLogistique en Action
+          </h2>
+          <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mt-2">
+            Captures vidéo réelles en haute définition (1080p) montrant le jumeau numérique 3D, le moteur mathématique de slotting ABC Pareto, l'analyse des distances caristes et la conformité TMD Transports Canada.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <!-- VIDEO 1: 50s WMS 3D -->
+          <div class="rounded-3xl overflow-hidden bg-white dark:bg-[#0f1724] border border-slate-200 dark:border-slate-800 shadow-2xl flex flex-col">
+            <div class="bg-slate-950 aspect-video relative">
+              <video id="vid-wms50" controls preload="metadata" poster="images/wms50_intro.jpg" class="w-full h-full object-contain">
+                <source src="videos/wms_slotting_3d_v2_demo_50s.mp4" type="video/mp4" />
+              </video>
+            </div>
+            <div class="p-6 space-y-4 flex-1 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between gap-2">
+                  <span class="px-2.5 py-0.5 rounded-full text-xs font-mono font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">50 Secondes · Full HD</span>
+                  <span class="text-xs font-mono text-slate-400">Three.js · Web Workers</span>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-2">Démonstration Complète : WMS SmartSlotting 3D v7.2</h3>
+                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1">
+                  Cliquez sur une étape ci-dessous pour sauter directement au moment correspondant dans la vidéo :
+                </p>
+              </div>
+              <div class="flex flex-wrap gap-1.5 pt-2">
+                <button onclick="seekVideo('vid-wms50', 5)" class="px-2.5 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-emerald-600 hover:text-white text-xs font-mono transition-colors">00:05 · Jumeau 3D</button>
+                <button onclick="seekVideo('vid-wms50', 13)" class="px-2.5 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-emerald-600 hover:text-white text-xs font-mono transition-colors">00:13 · Import CSV</button>
+                <button onclick="seekVideo('vid-wms50', 20)" class="px-2.5 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-emerald-600 hover:text-white text-xs font-mono transition-colors">00:20 · Slotting ABC</button>
+                <button onclick="seekVideo('vid-wms50', 28)" class="px-2.5 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-emerald-600 hover:text-white text-xs font-mono transition-colors">00:28 · Gains Distances</button>
+                <button onclick="seekVideo('vid-wms50', 35)" class="px-2.5 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-emerald-600 hover:text-white text-xs font-mono transition-colors">00:35 · Ségrégation TMD</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- VIDEO 2: 38s TEASER GLOBAL -->
+          <div class="rounded-3xl overflow-hidden bg-white dark:bg-[#0f1724] border border-slate-200 dark:border-slate-800 shadow-2xl flex flex-col">
+            <div class="bg-slate-950 aspect-video relative">
+              <video id="vid-teaser" controls preload="metadata" poster="images/app02.jpg" class="w-full h-full object-contain">
+                <source src="videos/dlogistique_teaser_promo.mp4" type="video/mp4" />
+              </video>
+            </div>
+            <div class="p-6 space-y-4 flex-1 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between gap-2">
+                  <span class="px-2.5 py-0.5 rounded-full text-xs font-mono font-semibold bg-sky-500/15 text-sky-400 border border-sky-500/30">38 Secondes · Vue d'Ensemble</span>
+                  <span class="text-xs font-mono text-slate-400">Suite Complète</span>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-2">Teaser Officiel : L'Écosystème Intralogistique Unifié</h3>
+                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1">
+                  Présentation synthétique reliant la modélisation 2D, le jumeau numérique 3D, la cédule de conteneurs et le portail central DLogistique.
+                </p>
+              </div>
+              <div class="p-3 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400 font-mono">
+                Production originale DLogistique · Laval (Québec)
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: RECHERCHE & DÉVELOPPEMENT (LES 6 ANGLES CACHÉS & 27 THÈSES) -->
+    <section id="recherche" class="py-16 bg-slate-100/70 dark:bg-[#0b121e] border-b border-slate-200 dark:border-slate-800/80">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mb-12">
+          <span class="font-mono text-xs uppercase tracking-widest text-emerald-500 font-semibold">06 · Laboratoire R&D & Ingénierie</span>
+          <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-2">
+            6 Innovations Nées de l'Observation du Plancher & 27 Études Techniques
+          </h2>
+          <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mt-2">
+            En plus des applications opérationnelles, <strong>DLogistique</strong> a rédigé 27 études d'ingénierie adaptées aux normes québécoises et canadiennes (CNESST RSST art. 245, CSA B335-15, CSA A344, Transports Canada TMD, Hydro-Québec).
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="p-6 rounded-2xl bg-white dark:bg-[#0f1724] border border-slate-200 dark:border-slate-800">
+            <span class="px-2.5 py-1 rounded-md bg-rose-500/10 text-rose-400 font-mono text-xs font-bold">Sécurité CSA A344</span>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white mt-3">1. Sismographie des Palettiers (RackPulse)</h3>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
+              Détecte non seulement les chocs francs (≥ 3,0G), mais aussi les frottements continus (≥ 0,85G pendant 350 ms) d'un chariot Reach contre une lisse, associe le choc au dernier rack scanné et imprime l'étiquette d'inspection sur Zebra sans aucun capteur IoT coûteux.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-white dark:bg-[#0f1724] border border-slate-200 dark:border-slate-800">
+            <span class="px-2.5 py-1 rounded-md bg-sky-500/10 text-sky-400 font-mono text-xs font-bold">Port de Montréal · OS&D</span>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white mt-3">2. Protocole « Pluie de Conteneur » (ContainerRain)</h3>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
+              Protocole photo guidé de 45 secondes à l'ouverture des portes d'un conteneur maritime en hiver (scellé ISO 17712, condensation au plafond, cartons affaissés) générant un constat PDF horodaté avant le déchargement du premier carton.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-white dark:bg-[#0f1724] border border-slate-200 dark:border-slate-800">
+            <span class="px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-400 font-mono text-xs font-bold">Algorithmique d'Inventaire</span>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white mt-3">3. Croisement « Moins de 20 » & Effet Domino</h3>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
+              Croise la liste de réception conteneur avec l'inventaire actif pour envoyer directement aux casiers de cueillette les articles ayant moins de 20 unités en stock, évitant une montée et une descente inutiles en réserve haute.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-white dark:bg-[#0f1724] border border-slate-200 dark:border-slate-800">
+            <span class="px-2.5 py-1 rounded-md bg-amber-500/10 text-amber-400 font-mono text-xs font-bold">Ergonomie Cariste 30 pieds</span>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white mt-3">4. Indexation Acoustique & Bacs P1 à P7</h3>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
+              Validation stricte des seuils physiques de débordement des bacs de cueillette (P1 = 60 pcs jusqu'à P7 = 420 pcs) et règle ergonomique forçant les pièces lourdes (> 15 kg) au niveau du sol.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-white dark:bg-[#0f1724] border border-slate-200 dark:border-slate-800">
+            <span class="px-2.5 py-1 rounded-md bg-purple-500/10 text-purple-400 font-mono text-xs font-bold">Zéro Litige Client</span>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white mt-3">5. Poste Zéro-Erreur Scan & Fermeture Palette</h3>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
+              Double validation au quai d'expédition : contrôle par scan, pesée de la palette complète par rapport au poids théorique des articles et preuve photo de la palette filmée avant départ pour éliminer les blocages de factures.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-white dark:bg-[#0f1724] border border-slate-200 dark:border-slate-800">
+            <span class="px-2.5 py-1 rounded-md bg-teal-500/10 text-teal-400 font-mono text-xs font-bold">Québec · Tarif M / G</span>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white mt-3">6. Écrêtage Énergétique & Slotting Hivernal</h3>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
+              Étude d'ordonnancement de la recharge des batteries de chariots Raymond en dehors des pointes hivernales d'Hydro-Québec (16h–20h) et protection thermique des produits proches des portes de quai.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7: PROPRIÉTÉ INTELLECTUELLE, FICHE OFFICIELLE NEQ & CONTACT -->
+    <section id="propriete" class="py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <div class="lg:col-span-7 p-8 rounded-3xl bg-white dark:bg-[#0f1724] border border-slate-200 dark:border-slate-800 shadow-xl space-y-4">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-500 font-mono text-xs font-bold">
+              <i class="fa-solid fa-scale-balanced"></i>
+              <span>Protection de la Propriété Intellectuelle</span>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">
+              Avis Officiel de Propriété & Droits d'Auteur — DLogistique
+            </h2>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              L'ensemble des applications, codes sources, algorithmes de slotting (ABC/COI/Jaccard/Domino), gabarits d'impression à codes-barres (Code 128 / ZPL), interfaces de cédules de conteneurs, listes de contrôle CNESST et études d'ingénierie présentés sur <strong>portfolio.dlogistique.com</strong> ont été conçus et développés à titre indépendant par <strong>Alexandre Damour</strong>, en dehors de tout mandat salarié, sur son matériel personnel et son temps libre.
+            </p>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              Ils constituent la propriété intellectuelle exclusive de l'entreprise immatriculée au Québec <strong>DLogistique</strong>. Toute utilisation en milieu d'entrepôt (y compris sous forme d'essai pilote, d'impression de listes ou de démonstration) s'effectue sous licence révocable accordée par <strong>DLogistique</strong> et n'entraîne aucune cession de droits.
+            </p>
+            <div class="pt-2 flex flex-wrap gap-3 text-xs font-mono text-emerald-500">
+              <span class="px-3 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20">✓ Entreprise enregistrée au Québec (NEQ)</span>
+              <span class="px-3 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20">✓ Dépôts Git horodatés (2025–2026)</span>
+              <span class="px-3 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20">✓ Conforme Loi 25 (Export ouvert)</span>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5 p-8 rounded-3xl bg-gradient-to-br from-emerald-950 to-slate-950 border border-emerald-800/60 text-white shadow-xl flex flex-col justify-between space-y-6">
+            <div class="space-y-4">
+              <span class="font-mono text-xs uppercase tracking-widest text-emerald-400">Fiche de l'Entreprise</span>
+              <h3 class="text-2xl font-black">DLogistique</h3>
+              <dl class="space-y-2.5 text-xs sm:text-sm">
+                <div class="flex justify-between border-b border-emerald-900/60 pb-2">
+                  <dt class="text-emerald-300/80">Fondateur & Spécialiste</dt>
+                  <dd class="font-semibold text-right">Alexandre Damour</dd>
+                </div>
+                <div class="flex justify-between border-b border-emerald-900/60 pb-2">
+                  <dt class="text-emerald-300/80">Statut juridique</dt>
+                  <dd class="font-semibold text-right">Entreprise immatriculée au Québec (NEQ)</dd>
+                </div>
+                <div class="flex justify-between border-b border-emerald-900/60 pb-2">
+                  <dt class="text-emerald-300/80">Siège</dt>
+                  <dd class="font-semibold text-right">795, rue de Sillery, Laval (QC) H7M 4R2</dd>
+                </div>
+                <div class="flex justify-between border-b border-emerald-900/60 pb-2">
+                  <dt class="text-emerald-300/80">Courriel officiel</dt>
+                  <dd class="font-mono text-emerald-300 text-right"><a href="mailto:support@dlogistique.com" class="underline">support@dlogistique.com</a></dd>
+                </div>
+                <div class="flex justify-between pb-1">
+                  <dt class="text-emerald-300/80">Domaines officiels</dt>
+                  <dd class="font-mono text-xs text-right">dlogistique.com · portfolio.dlogistique.com</dd>
+                </div>
+              </dl>
+            </div>
+
+            <a href="mailto:support@dlogistique.com?subject=Demande%20d'information%20%E2%80%94%20Portfolio%20DLogistique" class="w-full py-3.5 px-5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-center text-sm shadow-lg transition-all">
+              Discuter d'un problème d'inventaire ou d'entrepôt
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-900 dark:bg-[#05080d] border-t border-slate-800 text-slate-400 text-xs py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2.5">
+        <span class="font-bold text-white">DLogistique™</span>
+        <span>·</span>
+        <span>© 2026 Alexandre Damour — Laval (Québec) Canada. Tous droits réservés.</span>
+      </div>
+      <div class="flex items-center gap-4 font-mono text-[11px]">
+        <a href="#histoire" class="hover:text-emerald-400">Philosophie</a>
+        <a href="#applications" class="hover:text-emerald-400">Applications</a>
+        <a href="#simulateur" class="hover:text-emerald-400">Codes-Barres</a>
+        <a href="#propriete" class="hover:text-emerald-400">Droits & NEQ</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- APPLICATION DETAIL MODAL -->
+  <div id="app-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md" onclick="if(event.target===this)closeModal()">
+    <div class="bg-white dark:bg-[#0f1724] border border-slate-200 dark:border-slate-700 rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl p-6 sm:p-8 space-y-5">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <span id="modal-badge" class="px-2.5 py-1 rounded-full text-xs font-mono font-bold"></span>
+          <h3 id="modal-title" class="text-2xl font-black text-slate-900 dark:text-white mt-2"></h3>
+          <p id="modal-subtitle" class="text-xs font-mono text-emerald-500 mt-0.5"></p>
+        </div>
+        <button onclick="closeModal()" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-white flex items-center justify-center">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-950 max-h-72 flex items-center justify-center">
+        <img id="modal-img" src="" alt="" class="w-full h-full object-cover max-h-72" />
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm">
+        <div class="p-4 rounded-2xl bg-rose-500/10 border border-rose-500/20">
+          <div class="font-bold text-rose-400 mb-1"><i class="fa-solid fa-triangle-exclamation mr-1"></i> Problème vécu sur le plancher</div>
+          <p id="modal-problem" class="text-slate-700 dark:text-slate-300 leading-relaxed"></p>
+        </div>
+        <div class="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/20">
+          <div class="font-bold text-emerald-400 mb-1"><i class="fa-solid fa-check-double mr-1"></i> Solution DLogistique</div>
+          <p id="modal-solution" class="text-slate-700 dark:text-slate-300 leading-relaxed"></p>
+        </div>
+      </div>
+      <div>
+        <h4 class="text-xs font-mono uppercase tracking-wider text-slate-400 font-bold mb-2">Fonctions & Spécificités Techniques Embarquées</h4>
+        <ul id="modal-features" class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300"></ul>
+      </div>
+      <div class="pt-4 border-t border-slate-200 dark:border-slate-800 flex flex-wrap items-center justify-between gap-3">
+        <span class="text-[11px] font-mono text-slate-400">© 2026 DLogistique (NEQ) · Conception : Alexandre Damour</span>
+        <button onclick="closeModal()" class="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold">Fermer la fiche</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- INTERACTIVE SCRIPTS -->
+  <script>
+    // 1. THEME TOGGLE
+    function toggleTheme() {
+      const html = document.documentElement;
+      html.classList.toggle('dark');
+      const icon = document.getElementById('theme-icon');
+      icon.className = html.classList.contains('dark') ? 'fa-solid fa-sun text-sm' : 'fa-solid fa-moon text-sm';
+    }
+
+    // 2. VIDEO CHAPTER SEEK
+    function seekVideo(id, seconds) {
+      const v = document.getElementById(id);
+      if (v) {
+        v.currentTime = seconds;
+        v.play();
+      }
+    }
+
+    // 3. THE 10 WAREHOUSE JOURNEY STEPS
+    const JOURNEY_STEPS = [
+      {
+        num: "01",
+        name: "Le Plan 2D/3D",
+        icon: "fa-map-location-dot",
+        status: "Prototype avancé (80+ SVG)",
+        title: "01 · Le Plan de l'Entrepôt (La Fondation Partagée)",
+        desc: "Tout commence par la carte exacte du bâtiment : où sont les portes de quai, les allées à sens unique, les colonnes d'acier, les extincteurs et les casiers P1 à P7. Dessiné par-dessus un plan d'architecte sur PC ou directement au doigt sur iPhone.",
+        apps: ["Layout CAD (80+ SVG)", "DLogistique Mapping CAD", "STOCKFLOW 2D", "Dessin & Cotes iPhone"]
+      },
+      {
+        num: "02",
+        name: "Cour & Quais",
+        icon: "fa-truck-ramp-box",
+        status: "Testé #1 & Déployé",
+        title: "02 · La Cour, la Guérite et la Cédule de Conteneurs",
+        desc: "Avant même que le conteneur n'arrive, le système valide son numéro ISO 6346, surveille sa date limite sans frais (Last Free Day) pour éviter les surestaries portuaires, donne un laissez-passer QR au transporteur et capture les preuves photos à l'ouverture des portes.",
+        apps: ["Cédule de Conteneurs (C-dulerr)", "Portail Transporteur", "Calculateur de Surestaries"]
+      },
+      {
+        num: "03",
+        name: "Sécurité CNESST",
+        icon: "fa-Traffic-cone",
+        icon: "fa-helmet-safety",
+        status: "Prêt au terrain (SHA-256 + Zebra)",
+        title: "03 · Inspections Pré-Quart des Chariots & Détection des Chocs",
+        desc: "Chaque matin en 2 minutes, le cariste valide son chariot (norme CSA B335 / CNESST). En roulant, le capteur du terminal détecte les impacts et frottements contre les racks, les relie au dernier casier scanné et imprime l'étiquette d'avarie sur la Zebra ZQ630.",
+        apps: ["Inspections Chariots CNESST", "Reach Telematics & Zebra ZPL"]
+      },
+      {
+        num: "04",
+        name: "Réception < 20",
+        icon: "fa-boxes-packing",
+        status: "Algorithme éprouvé",
+        title: "04 · Réception Conteneur & Interception « Moins de 20 »",
+        desc: "Au lieu de monter des palettes en réserve haute pour devoir les redescendre le lendemain, l'outil croise la liste du conteneur avec l'inventaire actif et signale immédiatement tous les produits dont le casier de cueillette contient moins de 20 unités.",
+        apps: ["Réception Conteneur (Recv-Container)", "Moteur Under 20"]
+      },
+      {
+        num: "05",
+        name: "Déplacements",
+        icon: "fa-barcode",
+        status: "Utilisé au quotidien (Excel + Codes-Barres)",
+        title: "05 · Déplacements de Produits & Impression de Listes à Codes-Barres",
+        desc: "À partir du fichier Excel sur l'ordinateur de l'entrepôt, l'application génère un lot numéroté (DEP.00001) et imprime une feuille claire avec codes-barres Code 128. Sur le terminal, elle contrôle chaque scan et pose la question clé : « Le bin de provenance est-il vide ? ».",
+        apps: ["DLogistique Déplacements (PWA & Excel)", "Zebra Label Maker"]
+      },
+      {
+        num: "06",
+        name: "Remise & Pick-Bin",
+        icon: "fa-cart-flatbed-boxes",
+        status: "Prototype terrain fonctionnel",
+        title: "06 · Lots Cumulés de Pick-Bin & Tournées de Remise en Stock",
+        desc: "Permet de scanner en rafale les pièces à remettre en rayon, de constituer des lots propres, de trier automatiquement la feuille de route dans l'ordre logique des allées (serpentin) et d'exporter le bilan Excel de fin de journée.",
+        apps: ["Pick-Bin Manager", "Remise en Stock Optimisée"]
+      },
+      {
+        num: "07",
+        name: "Slotting ABC 3D",
+        icon: "fa-cubes",
+        status: "Testé avec grand succès (ABC/COI)",
+        title: "07 · Classement ABC / COI & Jumeau Numérique 3D",
+        desc: "Calcule l'emplacement idéal de jusqu'à 50 000 pièces selon leur vitesse de rotation (A/B/C), leur poids (>15 kg au sol), les limites des bacs P1 à P7 et la ségrégation des matières dangereuses (TMD), avec calcul des échanges à effet domino.",
+        apps: ["WMS SmartSlotting 3D v7.2", "Calculateur de Layout & Effet Domino"]
+      },
+      {
+        num: "08",
+        name: "Consolidation IA",
+        icon: "fa-compress",
+        status: "Prototype avancé + Audit PDF",
+        title: "08 · Fusion Multi-Emplacements & Comptage d'Écarts",
+        desc: "Repère automatiquement les mêmes produits dispersés dans 2 ou 3 casiers à moitié vides, vérifie que la somme ne fait pas déborder le bac cible, et imprime les feuilles de regroupement pour récupérer 15% à 25% d'espace.",
+        apps: ["Moteur IA de Consolidation", "Audit d'Inventaire & Écarts"]
+      },
+      {
+        num: "09",
+        name: "Supervision",
+        icon: "fa-tower-observation",
+        status: "Prototype complet (15 écrans)",
+        title: "09 · Supervision, Cycles de Maintenance & Horaires Équitables",
+        desc: "Planifie l'entretien tournant des groupes de produits (dès qu'une famille est terminée, la suivante s'enclenche automatiquement), distribue les tâches quotidiennes et génère des horaires d'équipe équitables.",
+        apps: ["Superviseur v2", "Planification Maintenance Produits", "Planificateur d'Horaires"]
+      },
+      {
+        num: "10",
+        name: "Demandes & Expé.",
+        icon: "fa-clipboard-check",
+        status: "Prototype fonctionnel",
+        title: "10 · Demandes Internes (Annulations / Ajustements) & Expédition",
+        desc: "Relie le service client à l'entrepôt pour traiter proprement les demandes d'annulation de commandes (avant qu'elles ne soient préparées pour rien), les ajustements d'inventaire et la fermeture de palettes par code PIN.",
+        apps: ["Portail Service Interne", "Suivi des Expéditions PIN"]
+      }
+    ];
+
+    let activeStepIdx = 4; // Default to Step 05 (Déplacements & Codes-barres)
+
+    function renderJourney() {
+      const btnContainer = document.getElementById('journey-buttons');
+      btnContainer.innerHTML = JOURNEY_STEPS.map((s, idx) => `
+        <button onclick="selectJourney(${idx})" class="p-3 rounded-2xl text-left border transition-all ${idx === activeStepIdx ? 'bg-emerald-600 text-white border-emerald-400 shadow-lg shadow-emerald-600/20' : 'bg-white dark:bg-[#0f1724] text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:border-emerald-500/50'}">
+          <div class="flex items-center justify-between text-xs font-mono opacity-80">
+            <span>ÉTAPE ${s.num}</span>
+            <i class="fa-solid ${s.icon}"></i>
+          </div>
+          <div class="font-bold text-xs sm:text-sm mt-1 truncate">${s.name}</div>
+        </button>
+      `).join('');
+
+      const step = JOURNEY_STEPS[activeStepIdx];
+      document.getElementById('journey-detail').innerHTML = `
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-200 dark:border-slate-800">
+          <div>
+            <span class="px-3 py-1 rounded-full text-xs font-mono font-bold bg-emerald-500/15 text-emerald-500 border border-emerald-500/30">${step.status}</span>
+            <h3 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white mt-2">${step.title}</h3>
+          </div>
+          <div class="text-xs font-mono text-slate-400">Module ${step.num} / 10</div>
+        </div>
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 mt-4 leading-relaxed">${step.desc}</p>
+        <div class="mt-5 pt-4 border-t border-slate-200 dark:border-slate-800 flex flex-wrap items-center gap-2">
+          <span class="text-xs font-mono text-slate-400 mr-2">Applications associées :</span>
+          ${step.apps.map(a => `<span class="px-3 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-emerald-300 text-xs font-semibold border border-slate-300 dark:border-slate-700">${a}</span>`).join('')}
+        </div>
+      `;
+    }
+
+    function selectJourney(idx) {
+      activeStepIdx = idx;
+      renderJourney();
+    }
+
+    // 4. REAL CODE 128 BARCODE GENERATOR (SVG) FOR THE INTERACTIVE SHEET
+    const CODE128B_PATTERNS = [
+      "212222","222122","222221","121223","121322","131222","122213","122312","132212","221213",
+      "221312","231212","112232","122132","122231","113222","123122","123221","223211","221132",
+      "221231","213212","223112","312131","311222","321122","321221","312212","322112","322211",
+      "212123","212321","232121","111323","131123","131321","112313","132113","132311","211313",
+      "231113","231311","112133","112331","132131","113123","113321","133121","313121","211331",
+      "231131","213113","213311","213131","311123","311321","331121","312113","312311","332111",
+      "314111","221411","431111","111224","111422","121124","121421","141122","141221","112214",
+      "112412","122114","122411","142112","142211","241211","221114","413111","241112","134111",
+      "111242","121142","121241","114212","124112","124211","411212","421112","421211","212141",
+      "214121","412121","111143","111341","131141","114113","114311","411113","411311","113141",
+      "114131","311141","411131","211412","211214","211232","2331112"
+    ];
+
+    function makeCode128Svg(text, height = 34) {
+      const clean = String(text || "DL").replace(/[^\x20-\x7E]/g, "");
+      let codes = [104]; // Start Code B
+      let checksum = 104;
+      for (let i = 0; i < clean.length; i++) {
+        const val = clean.charCodeAt(i) - 32;
+        codes.push(val);
+        checksum += val * (i + 1);
+      }
+      codes.push(checksum % 103);
+      codes.push(106); // Stop
+
+      let bars = [];
+      let x = 0;
+      for (const c of codes) {
+        const pat = CODE128B_PATTERNS[c] || CODE128B_PATTERNS[0];
+        for (let i = 0; i < pat.length; i++) {
+          const w = parseInt(pat[i], 10) * 1.45;
+          if (i % 2 === 0) {
+            bars.push(`<rect x="${x.toFixed(1)}" y="0" width="${w.toFixed(1)}" height="${height}" fill="#0f172a"/>`);
+          }
+          x += w;
+        }
+      }
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="${Math.ceil(x)}" height="${height + 14}" viewBox="0 0 ${Math.ceil(x)} ${height + 14}" style="display:inline-block">
+        ${bars.join('')}
+        <text x="${(x/2).toFixed(1)}" y="${height + 11}" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9.5" font-weight="600" fill="#0f172a">${clean}</text>
+      </svg>`;
+    }
+
+    let simulatedMoves = [
+      { from: "L2A-04-B", sku: "ALT-99201-HD", qty: 18, to: "L2A-01-A", binType: "P2 (Max 120 pcs)" },
+      { from: "L5D-11-C", sku: "PAD-44105-QC", qty: 40, to: "L3B-06-B", binType: "P3 (Max 180 pcs)" },
+      { from: "QUAI-REC-02", sku: "FIL-10028-oil", qty: 60, to: "L2B-02-A", binType: "P1 (Max 60 pcs)" }
+    ];
+
+    function renderSimulatedSheet() {
+      document.getElementById('lot-master-barcode').innerHTML = makeCode128Svg("DEP.00001.QC", 28);
+      const tbody = document.getElementById('sim-rows');
+      tbody.innerHTML = simulatedMoves.map((m, idx) => `
+        <tr>
+          <td class="py-3 pr-2 align-top">
+            ${makeCode128Svg(m.from, 28)}
+          </td>
+          <td class="py-3 px-2 align-top">
+            ${makeCode128Svg(m.sku, 28)}
+            <div class="font-bold text-slate-900 mt-1">Qté à déplacer : <span class="px-1.5 py-0.5 bg-slate-200 rounded font-mono">${m.qty} pcs</span> · <span class="text-[10px] text-slate-600">${m.binType}</span></div>
+          </td>
+          <td class="py-3 px-2 align-top">
+            ${makeCode128Svg(m.to, 28)}
+          </td>
+          <td class="py-3 pl-2 align-middle text-center font-mono text-[11px]">
+            <div class="inline-flex flex-col gap-1 items-start text-left">
+              <label class="inline-flex items-center gap-1.5 cursor-pointer"><input type="checkbox" class="w-3.5 h-3.5" /> <span>OUI (Bin libre)</span></label>
+              <label class="inline-flex items-center gap-1.5 cursor-pointer"><input type="checkbox" class="w-3.5 h-3.5" /> <span>NON (Reste stock)</span></label>
+            </div>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function addSimulatedMove() {
+      const from = document.getElementById('sim-from').value.trim().toUpperCase() || "L2A-01-A";
+      const to = document.getElementById('sim-to').value.trim().toUpperCase() || "L3B-02-B";
+      const sku = document.getElementById('sim-sku').value.trim().toUpperCase() || "SKU-1000";
+      const qty = parseInt(document.getElementById('sim-qty').value, 10) || 10;
+      const binType = document.getElementById('sim-bin-type').value;
+      simulatedMoves.unshift({ from, sku, qty, to, binType });
+      if (simulatedMoves.length > 5) simulatedMoves.pop();
+      renderSimulatedSheet();
+    }
+
+    // 5. THE 18 APPLICATIONS CATALOG DATA
+    const APPS = [
+      {
+        id: "deplacements-pwa",
+        title: "DLogistique — Déplacements & Listes à Codes-Barres",
+        subtitle: "Remplacement intelligent de classeur Excel · Impression Code 128 & Zebra ZQ630",
+        status: "⭐ Testé sur le terrain · Prêt #1",
+        statusColor: "bg-emerald-500/20 text-emerald-400 border-emerald-500/40",
+        cats: ["tested", "inventaire"],
+        img: "images/app12.png",
+        problem: "Les déplacements d'inventaire faits sur papier ou dans un gros fichier Excel à macros prennent du temps, causent des erreurs de frappe et personne ne sait si l'emplacement de départ est devenu vide.",
+        solution: "Importe la liste depuis l'Excel sur l'ordinateur, génère un lot numéroté (DEP.00001), imprime la feuille complète avec codes-barres (ou sur Zebra ZQ630), valide chaque scan sur terminal et demande si le bin de départ est vide.",
+        features: [
+          "Impression de feuilles de déplacements et d'étiquettes pleine page avec vrais codes-barres Code 128",
+          "Question automatique de fin de tâche : « Le bin de provenance est-il vide ? » (libère le bin immédiatement)",
+          "Touches rapides F1 à F5 pour terminaux Honeywell CT45 + Impression Bluetooth Zebra ZQ630",
+          "Relais automatique vers Excel Online (SharePoint / Power Automate) ou export Excel en un clic"
+        ]
+      },
+      {
+        id: "cedule-conteneurs",
+        title: "Cédule de Conteneurs, Guérite & Preuves Photos",
+        subtitle: "Planification des quais · Anti-surestaries portuaires · Portail Transporteur",
+        status: "⭐ Testé #1 sur le terrain",
+        statusColor: "bg-emerald-500/20 text-emerald-400 border-emerald-500/40",
+        cats: ["tested", "quais"],
+        img: "images/app06.jpg",
+        problem: "Un conteneur maritime oublié au-delà de ses jours libres (Last Free Day) coûte des centaines de dollars par jour en surestaries, et les marchandises reçues mouillées ou écrasées sans photos immédiates sont impossibles à réclamer.",
+        solution: "Centralise l'horaire de la semaine, valide mathématiquement les numéros de conteneurs (ISO 6346) et de scellés, offre un portail web aux transporteurs et archive les preuves photos horodatées à l'ouverture des portes.",
+        features: [
+          "Calculateur de risque de surestaries (Demurrage & Detention) et suivi des dates limites LFD",
+          "Portail externe pour les transporteurs avec laissez-passer QR Code à la guérite",
+          "Module de prise de photos de réception et génération de rapport PDF de litige (OS&D)",
+          "Validation automatique du chiffre d'autocontrôle ISO 6346 des conteneurs maritimes"
+        ]
+      },
+      {
+        id: "smartslotting-3d",
+        title: "WMS SmartSlotting 3D v7.2 & Classement ABC",
+        subtitle: "Optimisation mathématique A/B/C · Jumeau Numérique 3D Three.js · Règles TMD",
+        status: "⭐ Testé avec succès (ABC)",
+        statusColor: "bg-emerald-500/20 text-emerald-400 border-emerald-500/40",
+        cats: ["tested", "inventaire", "plans"],
+        img: "images/app02.jpg",
+        problem: "Dans un entrepôt de milliers de pièces, 60 % du temps est perdu à marcher parce que les articles très vendus (Classe A) sont loin des quais ou que des pièces lourdes sont placées en hauteur.",
+        solution: "Classe automatiquement l'inventaire Excel en catégories A/B/C et indice COI, impose les pièces de plus de 15 kg au sol, vérifie les incompatibilités de matières dangereuses (TMD) et affiche le tout en 3D fluide.",
+        features: [
+          "Moteur Web Worker ultra-rapide : classification Pareto ABC, indice COI et affinité de commandes Jaccard",
+          "Visualisation 3D haute performance (< 50 draw calls) et cartouche de plan 2D normalisé",
+          "Contrôle ergonomique (limite de poids en hauteur) et matrice TMD Transports Canada",
+          "Importateur direct de plans vectoriels PDF et générateur de vagues de déménagement CSV"
+        ]
+      },
+      {
+        id: "inspections-chariot",
+        title: "Inspections Chariots CNESST & Détection de Chocs",
+        subtitle: "Conformité RSST art. 245 & CSA B335 · Registre SHA-256 · Dérogation Superviseur",
+        status: "⭐ Prêt au déploiement",
+        statusColor: "bg-emerald-500/20 text-emerald-400 border-emerald-500/40",
+        cats: ["tested", "quais"],
+        img: "images/inspection-captures-1.png",
+        problem: "Les feuilles papier d'inspection quotidienne obligatoire des chariots se perdent, et lorsqu'un chariot cogne un rack, personne ne le signale par peur d'être réprimandé.",
+        solution: "Inspection guidée en 2 minutes au scan du badge cariste et du QR chariot, verrouillage d'écran en cas de défaut critique ou de choc (>3G), déblocage par badge superviseur et registre infalsifiable.",
+        features: [
+          "Vérification de la date d'expiration de la carte de compétence du cariste au scan",
+          "Détection automatique des chocs par accéléromètre (distingue un vrai choc d'un téléphone échappé)",
+          "Chaînage cryptographique SHA-256 garantissant à la CNESST qu'aucune fiche n'a été modifiée",
+          "Console d'administration complète (11 onglets) avec export CSV pour audit"
+        ]
+      },
+      {
+        id: "reach-telematics-zebra",
+        title: "Reach Telematics & Studio Étiquettes Zebra ZPL",
+        subtitle: "Détection de frottements continus sur lisses · Impression ZPL automatique",
+        status: "⭐ Innovation exclusive DLogistique",
+        statusColor: "bg-emerald-500/20 text-emerald-400 border-emerald-500/40",
+        cats: ["tested", "quais"],
+        img: "images/inspection-captures-2.png",
+        problem: "Les systèmes à 3 000 $/chariot ne voient que les gros accidents, mais pas quand un cariste frotte lentement une lisse à 25 pieds de haut avec son mât rétractable.",
+        solution: "Auto-calibre les vibrations du chariot en 10 secondes, détecte les frottements continus (0,85G pendant 350 ms), les relie au dernier casier scanné et imprime une étiquette d'avarie 4x6 sur l'imprimante Zebra.",
+        features: [
+          "Double détection : impact brutal (≥ 3,0G) ET frottement continu d'acier sur lisse (≥ 0,85G)",
+          "Interception matérielle des scans Honeywell ScanWedge pour connaître la travée exacte",
+          "Impression directe par Wi-Fi (port 9100) ou Bluetooth sur Zebra ZQ630",
+          "Inclut un Studio Visuel d'Étiquettes ZPL (aperçu temps réel avant impression)"
+        ]
+      },
+      {
+        id: "calculateur-domino",
+        title: "Calculateur de Layout & Simulateur d'Effet Domino",
+        subtitle: "Notation sur 100 de l'entrepôt · Échanges de casiers sans blocage",
+        status: "🔵 Prototype avancé",
+        statusColor: "bg-sky-500/20 text-sky-400 border-sky-500/40",
+        cats: ["inventaire", "plans"],
+        img: "images/app15.jpg",
+        problem: "Quand on veut réorganiser une allée pour mettre un produit A à la place d'un produit B, le casier de destination est déjà plein : le cariste est bloqué.",
+        solution: "Évalue l'entrepôt sur 5 critères (Sécurité, Ergonomie, Distance, Affinité, Cohérence) et calcule la séquence exacte d'échanges à effet domino.",
+        features: [
+          "Carte 2D interactive avec sélection en masse par allée, par travée ou par niveau",
+          "Identification automatique de la Golden Zone (zone dorée de cueillette rapide)",
+          "Comparateur visuel Avant / Après avec liste des anomalies classées par gravité",
+          "Génération des missions séquencées exportables en CSV et JSON"
+        ]
+      },
+      {
+        id: "ia-consolidation",
+        title: "Moteur IA de Consolidation Multi-Emplacements",
+        subtitle: "Regroupement des casiers partiels · Récupération de 15 % à 25 % d'espace",
+        status: "🔵 Prototype avancé",
+        statusColor: "bg-sky-500/20 text-sky-400 border-sky-500/40",
+        cats: ["inventaire"],
+        img: "images/app09.png",
+        problem: "Au fil des réceptions, un même numéro de pièce se retrouve éparpillé dans 3 ou 4 casiers différents à moitié vides, saturant l'entrepôt.",
+        solution: "Analyse le fichier Excel d'inventaire, repère tous les doublons d'emplacements et génère le plan optimal de fusion physique pour libérer des casiers complets.",
+        features: [
+          "Détection heuristique et assistée par IA des produits multi-emplacements",
+          "Simulateur de scénarios avec respect des capacités par type d'emplacement",
+          "Visualiseur graphique des règles de priorité de fusion",
+          "Impression directe des fiches de consolidation pour l'équipe de terrain"
+        ]
+      },
+      {
+        id: "pick-bin-manager",
+        title: "Pick-Bin Manager — Constitution de Lots Cumulés",
+        subtitle: "Scan en rafale · Détection des produits sans location · Export journalier Excel",
+        status: "🔵 Prototype terrain",
+        statusColor: "bg-sky-500/20 text-sky-400 border-sky-500/40",
+        cats: ["inventaire"],
+        img: "images/app11.png",
+        problem: "Lors de la remise en stock de petites pièces en casiers (pickbins), traiter les pièces une par une ralentit énormément les commis.",
+        solution: "Permet de scanner en continu pour monter un lot cumulé, affiche immédiatement l'emplacement cible ou signale si l'article est SANS_LOCATION, et imprime le bon de remise.",
+        features: [
+          "Scan par caméra ou douchette laser avec retour sonore (bip d'erreur / succès)",
+          "Filtrage instantané des articles non répertoriés ou sans emplacement assigné",
+          "Impression PDF propre du bordereau de lot numéroté",
+          "Historique quotidien complet avec export Excel en un clic de toute la journée"
+        ]
+      },
+      {
+        id: "remise-en-stock",
+        title: "Générateur de Tournées de Remise en Stock",
+        subtitle: "Tri par ordre de zones et d'allées · Impression condensée A4/Lettre",
+        status: "🔵 Prototype terrain",
+        statusColor: "bg-sky-500/20 text-sky-400 border-sky-500/40",
+        cats: ["inventaire"],
+        img: "images/app13.jpg",
+        problem: "Si un employé range son chariot dans l'ordre où les pièces ont été déballées, il traverse 6 fois le même entrepôt.",
+        solution: "Trie automatiquement la liste de remise selon l'ordre personnalisé des zones, des allées et des niveaux, et imprime une feuille condensée zéro aller-retour.",
+        features: [
+          "Configuration sur mesure de l'ordre de visite des zones de l'entrepôt",
+          "Mode d'impression condensé permettant de régler le nombre de lignes par page",
+          "Fonctionnement 100 % hors-ligne avec sauvegarde et restauration d'état",
+          "Calcul de score d'emplacement et chemin de tournée optimisé"
+        ]
+      },
+      {
+        id: "recv-container",
+        title: "Recv-Container — Croisement Réception x Stock Critique",
+        subtitle: "Interception directe au quai des articles ≤ 20 unités en casier",
+        status: "🔵 Outil spécialisé",
+        statusColor: "bg-sky-500/20 text-sky-400 border-sky-500/40",
+        cats: ["quais", "inventaire"],
+        img: "images/app07.jpg",
+        problem: "Les caristes montent en réserve haute des palettes fraîchement déchargées du conteneur alors que le casier de cueillette au sol est presque vide.",
+        solution: "Croise en 2 secondes l'inventaire actuel et la feuille de réception du conteneur pour isoler tout article qui doit aller directement en casier de picking.",
+        features: [
+          "Comparaison instantanée Inventaire seulement vs Inventaire + Réception",
+          "Règles de filtrage par zones prioritaires d'entrepôt",
+          "Détection des produits n'ayant aucune location admissible",
+          "Export direct de la liste de déplacements en format Excel (.xls) et PDF"
+        ]
+      },
+      {
+        id: "layout-cad-80svg",
+        title: "Layout CAD Industriel — Éditeur à 80+ Symboles SVG",
+        subtitle: "Bibliothèque vectorielle normalisée · Mode Multi-sélection iPhone",
+        status: "🔵 Prototype avancé (53 commits)",
+        statusColor: "bg-sky-500/20 text-sky-400 border-sky-500/40",
+        cats: ["plans"],
+        img: "images/app05.jpg",
+        problem: "Les logiciels comme AutoCAD sont trop complexes et impossibles à utiliser sur un téléphone en marchant dans les allées.",
+        solution: "Un éditeur vectoriel fluide sur PC et iPhone intégrant plus de 80 icônes industrielles dédiées à l'entrepôt (bacs P1 à P7, quais, chargeurs batteries, portes coupe-feu).",
+        features: [
+          "Plus de 80 symboles SVG spécialisés : bacs P1–P7, convoyeurs, niveleurs de quai, passages piétons",
+          "Mode multi-sélection pensé pour l'écran tactile d'un iPhone",
+          "Outil de mesure intégré, grille calibrée et annulation/rétablissement illimité",
+          "Import/Export JSON instantané du plan complet"
+        ]
+      },
+      {
+        id: "modelisation-2d",
+        title: "STOCKFLOW 2D / Entrepôt IA (CanvasDrawPro)",
+        subtitle: "Assistant 3 clics d'allée cariste · Mode Rayon X · Heatmap de rotation",
+        status: "🔵 Prototype avancé",
+        statusColor: "bg-sky-500/20 text-sky-400 border-sky-500/40",
+        cats: ["plans"],
+        img: "images/app01.jpg",
+        problem: "Dessiner 30 allées de palettiers une par une en indiquant de quel côté entre le chariot Reach prend des heures.",
+        solution: "Intègre un assistant unique en 3 clics (Début -> Fin -> Tête cariste) qui génère toute l'allée en vis-à-vis avec le sens de circulation et l'aperçu thermique.",
+        features: [
+          "Assistant 3 clics : génère une allée complète avec sens d'entrée cariste en 2 secondes",
+          "Mode Rayon X (estompe la structure pour inspecter l'intérieur des niveaux)",
+          "Superposition d'image de plan d'architecte avec réglage d'opacité et d'échelle",
+          "Carte de chaleur (Heatmap) de la rotation hebdomadaire des stocks"
+        ]
+      },
+      {
+        id: "mapping-cad",
+        title: "DLogistique Mapping CAD & Auditeur de Conformité",
+        subtitle: "Notation automatique du plan · Calque Blueprint · Vue Isométrique 3D",
+        status: "🔵 Prototype avancé",
+        statusColor: "bg-sky-500/20 text-sky-400 border-sky-500/40",
+        cats: ["plans"],
+        img: "images/app03.jpg",
+        problem: "Un plan d'entrepôt mal pensé oublie souvent les voies piétonnes sécurisées ou la cohérence d'adressage des sections.",
+        solution: "Permet de placer les casiers et infrastructures sur un calque de fond tout en calculant un score d'audit en direct (avec pénalités si les voies de sécurité manquent).",
+        features: [
+          "Panneau d'audit automatique déduisant des points en cas d'oubli de voies de sécurité",
+          "Bascule instantanée entre le plan de travail 2D et la vue 3D Three.js",
+          "Export haute résolution PNG pour impression d'affiche murale d'entrepôt",
+          "Export CSV complet de toutes les adresses créées (dimensions en pieds, niveaux, zones)"
+        ]
+      },
+      {
+        id: "dessin-iphone",
+        title: "Dessin & Prise de Cotes In-Situ (iPhone / 3D)",
+        subtitle: "Arpentage terrain au doigt · Réglage des hauteurs de lisses en pouces",
+        status: "🔵 Prototype mobile & SwiftUI",
+        statusColor: "bg-sky-500/20 text-sky-400 border-sky-500/40",
+        cats: ["plans"],
+        img: "images/app04.jpg",
+        problem: "Prendre les mesures des travées et des hauteurs de lisses sur un bloc-notes papier en marchant dans l'entrepôt oblige à tout redessiner au bureau.",
+        solution: "Conçu pour être utilisé à une main sur iPhone directement devant le palettier : on ajuste la hauteur des lisses en pouces avec des boutons +/- et on voit le rack en 3D.",
+        features: [
+          "Interface tactile optimisée pour ajuster les hauteurs de barres/lisses sur le terrain",
+          "Visualiseur 3D orbital instantané de la travée mesurée",
+          "Double architecture : application Web mobile + code natif SwiftUI iOS",
+          "Calcul automatique de la capacité et de l'occupation"
+        ]
+      },
+      {
+        id: "superviseur-v2",
+        title: "Superviseur v2 — Tour de Contrôle d'Entrepôt",
+        subtitle: "15 modules de gestion · Tâches, Équipes, Équipements, KPIs & Copilote IA",
+        status: "🔵 Prototype complet",
+        statusColor: "bg-sky-500/20 text-sky-400 border-sky-500/40",
+        cats: ["supervision"],
+        img: "images/app08.png",
+        problem: "Les contremaîtres jonglent entre des tableaux blancs, des post-it et des courriels pour suivre qui fait quoi, quels chariots sont disponibles et quelles consignes passer au quart suivant.",
+        solution: "Réunit en une seule console les tâches, le suivi des employés, les quarts de travail, les équipements, les règles internes et un assistant IA.",
+        features: [
+          "Création rapide de tâches et sous-tâches avec journal d'audit complet",
+          "Suivi des équipements, des quarts de travail (Shifts) et des notes de passation",
+          "Tableaux de bord KPI et calendrier opérationnel",
+          "Assistant IA intégré pour analyser la charge de travail de l'équipe"
+        ]
+      },
+      {
+        id: "maintenance-groupes",
+        title: "Planificateur de Maintenance des Familles de Produits",
+        subtitle: "Enchaînement automatique des groupes · Entretien cyclique d'inventaire",
+        status: "🔵 Outil de Spécialiste Inventaire",
+        statusColor: "bg-sky-500/20 text-sky-400 border-sky-500/40",
+        cats: ["inventaire", "supervision"],
+        img: "images/wms50_step4.jpg",
+        problem: "Sans calendrier structuré, on nettoie et vérifie toujours les mêmes allées faciles tandis que certaines familles de produits ne sont jamais auditées.",
+        solution: "Divise l'inventaire en groupes logiques (Automobile, Camion lourd, Industriel, etc.) avec une règle d'enchaînement : dès qu'un groupe est marqué Fini, le suivant se planifie automatiquement.",
+        features: [
+          "Règle de transition automatique de file entre les groupes de produits",
+          "Suivi des déplacements effectués et des imprévus par journée",
+          "Export du rapport mensuel complet avec graphiques en PDF",
+          "Sauvegarde et restauration JSON instantanée"
+        ]
+      },
+      {
+        id: "service-interne",
+        title: "Portail de Demandes Internes (Annulations & Ajustements)",
+        subtitle: "Pont Service Client ↔ Inventaire · Fini les commandes préparées pour rien",
+        status: "🔵 Prototype fonctionnel",
+        statusColor: "bg-sky-500/20 text-sky-400 border-sky-500/40",
+        cats: ["quais", "supervision"],
+        img: "images/wms50_step2.jpg",
+        problem: "Les demandes d'annulation de commande ou de vérification d'écart envoyées par courriel ou criées à travers le bureau se perdent.",
+        solution: "Un portail clair à 3 formulaires : Annulation de commande, Ajustement d'inventaire et Commande interne de fournitures, avec suivi de statut en direct.",
+        features: [
+          "Formulaire structuré d'annulation de commande avant expédition",
+          "Formulaire de signalement d'écart d'inventaire pour le spécialiste inventaire",
+          "Console d'approbation (En cours, Approuvé, Complété, Rejeté) avec notes internes",
+          "Numéro de suivi unique pour chaque demande"
+        ]
+      },
+      {
+        id: "codex-knowledge",
+        title: "Codex DLogistique — Base de Connaissances & 200 FAQ",
+        subtitle: "Moteur RAG 100 % hors-ligne · Livre de règles · Formation accélérée",
+        status: "🟣 Encyclopédie & Cerveau IA",
+        statusColor: "bg-purple-500/20 text-purple-400 border-purple-500/40",
+        cats: ["supervision"],
+        img: "images/app10.png",
+        problem: "Former un nouvel employé aux règles de réception, de sécurité CNESST et de rangement des casiers prend des semaines.",
+        solution: "Une base de connaissances interrogeable hors-ligne contenant 200 questions-réponses d'entrepôt de pièces, des checklists de réception et le cadre légal québécois.",
+        features: [
+          "200 questions-réponses opérationnelles couvrant la réception, les casiers et l'expédition",
+          "Moteur de recherche vectoriel local fonctionnant sans connexion Internet",
+          "Livre de règles canonique (Rulebook) avec vérification d'intégrité",
+          "Générateur local de rapports Word (.docx) et Excel (.xlsx) via IA locale Ollama"
+        ]
+      }
+    ];
+
+    let currentCat = 'all';
+
+    function setCat(cat) {
+      currentCat = cat;
+      document.querySelectorAll('.cat-btn').forEach(btn => {
+        if (btn.dataset.cat === cat) {
+          btn.className = "cat-btn px-3.5 py-2 rounded-xl text-xs font-bold bg-emerald-600 text-white shadow transition-all";
+        } else {
+          btn.className = "cat-btn px-3.5 py-2 rounded-xl text-xs font-bold bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border border-slate-300 dark:border-slate-800 hover:border-emerald-500/50 transition-all";
+        }
+      });
+      renderApps();
+    }
+
+    function renderApps() {
+      const q = (document.getElementById('app-search').value || '').toLowerCase();
+      const grid = document.getElementById('portfolio-grid');
+      const filtered = APPS.filter(a => {
+        const matchCat = currentCat === 'all' || a.cats.includes(currentCat);
+        const matchQ = !q || a.title.toLowerCase().includes(q) || a.subtitle.toLowerCase().includes(q) || a.solution.toLowerCase().includes(q);
+        return matchCat && matchQ;
+      });
+
+      grid.innerHTML = filtered.map(a => `
+        <article onclick="openModal('${a.id}')" class="cursor-pointer rounded-3xl overflow-hidden bg-white dark:bg-[#0f1724] border border-slate-200 dark:border-slate-800 hover:border-emerald-500/60 card-lift flex flex-col justify-between shadow-lg">
+          <div>
+            <div class="relative h-48 bg-slate-950 overflow-hidden border-b border-slate-200 dark:border-slate-800">
+              <img src="${a.img}" alt="${a.title}" loading="lazy" class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500" />
+              <div class="absolute top-3 left-3">
+                <span class="px-2.5 py-1 rounded-full text-[11px] font-mono font-bold border backdrop-blur-md ${a.statusColor}">${a.status}</span>
+              </div>
+            </div>
+            <div class="p-5 space-y-2.5">
+              <h3 class="text-lg font-extrabold text-slate-900 dark:text-white leading-snug">${a.title}</h3>
+              <p class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400">${a.subtitle}</p>
+              <p class="text-xs text-slate-600 dark:text-slate-400 line-clamp-3 leading-relaxed">${a.solution}</p>
+            </div>
+          </div>
+          <div class="px-5 pb-5 pt-3 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-xs">
+            <span class="font-mono text-[11px] text-slate-400">DLogistique™</span>
+            <span class="font-bold text-emerald-500 flex items-center gap-1.5">
+              <span>Voir les détails</span>
+              <i class="fa-solid fa-arrow-right text-[10px]"></i>
+            </span>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function openModal(id) {
+      const app = APPS.find(x => x.id === id);
+      if (!app) return;
+      document.getElementById('modal-badge').className = `px-3 py-1 rounded-full text-xs font-mono font-bold border ${app.statusColor}`;
+      document.getElementById('modal-badge').textContent = app.status;
+      document.getElementById('modal-title').textContent = app.title;
+      document.getElementById('modal-subtitle').textContent = app.subtitle;
+      document.getElementById('modal-img').src = app.img;
+      document.getElementById('modal-problem').textContent = app.problem;
+      document.getElementById('modal-solution').textContent = app.solution;
+      document.getElementById('modal-features').innerHTML = app.features.map(f => `
+        <li class="flex items-start gap-2 p-2.5 rounded-xl bg-slate-50 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800">
+          <i class="fa-solid fa-circle-check text-emerald-400 mt-0.5"></i>
+          <span>${f}</span>
+        </li>
+      `).join('');
+      const m = document.getElementById('app-modal');
+      m.classList.remove('hidden');
+      m.classList.add('flex');
+    }
+
+    function closeModal() {
+      const m = document.getElementById('app-modal');
+      m.classList.add('hidden');
+      m.classList.remove('flex');
+    }
+
+    // INIT
+    renderJourney();
+    renderSimulatedSheet();
+    renderApps();
+  </script>
+</body>
+</html>
